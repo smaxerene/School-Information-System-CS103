@@ -51,33 +51,34 @@ int main()
     cout << "\t\tSCHOOL INFORMATION SYSTEM";
     line(); //Line function
 
+    back:
+    
     cout << "\n";
-    cout << "Press A for Admin. \nPress B for Student.\n";
+    cout << "Press capital (A) for Admin.\nPress capital (B) for Student.\n";
+    cout << "Press small (e) to terminate/exit program.\n";
     cout << "Input here: ";
     cin >> choice;
 
     if (choice == admin)
     {
-        system("cls");//Clears screen
+        system("cls"); //Clears screen
         admInfoInp();
     }
     else if (choice == stud)
     {
-        system("cls");//Clears screen
+        system("cls"); //Clears screen
         studInfoInp();
+    }
+    else if (choice == 'e')
+    {
+        cout << "\n\nProgram Ended";
+        return 0;
     }
     else
     {
-        cout << "Wrong Choice! Go back? (Yes/ No): ";
-        cin >> goBack;
-
-        if (goBack == yes || goBack == yes2)
-        {
-            cout << "\n";
-            cout << "Press A for Admin.\nPress B for Student.\n";
-            cout << "Input here: ";
-            cin >> choice;
-        }
+        cout << "Invalid Input! Please Try Again! ";
+        cout << "\n\n";
+        goto back; //Goes to back
     }
 }
 
