@@ -10,13 +10,13 @@ using namespace std;
 struct student
 {
     int studIdNo = 0; //ID Number
-    string fName, lName, progEn; //First name, Last name, Program Enrolled
+    string fName, lName, progEn, sign, clas, ask, self, progress; //First name, Last name, Program Enrolled
 }studentInfo;
 
 struct teacher
 {
     int teaIdNo = 0; //ID Number
-    string fiName, laName, position; //First name, Last name, Position
+    string fiName, laName, position, sign; //First name, Last name, Position
 }teacherInfo;
 
 struct others
@@ -39,6 +39,7 @@ void stuStuInf();
 void teaTeaInf();
 void StuTeaInf();
 void TeaRep();
+void TeachDisplay();
 void StuRep();
 
 //Main Function
@@ -531,10 +532,87 @@ void TeaRep()
 {
     system("cls"); //Clears screen
 
+    char choice = 0, finishy = 'y', finishn = 'e';
+
     line(); //Line function
     cout << "\t\tSCHOOL INFORMATION SYSTEM";
     line(); //Line function
-    cout << "\n";
+
+    cout << " \n Student first and Last Name:"; cin >> studentInfo.fName; cout << ":"; cin >> studentInfo.lName;
+    cout << "\tStudent ID:"; cin >> studentInfo.studIdNo;
+    cout << "\n\n";
+    cout << "Teacher First and Last Name:"; cin >> teacherInfo.fiName; cout << ":"; cin >> teacherInfo.laName;
+    cout << "\tSignature:"; cin >> teacherInfo.sign;
+
+    cout << "Date:";
+    cin >> teacherInfo.Date;
+    cout << "\n\n";
+    cout << "Review student rate rarely/constantly/excellent/ bad/ good:\n";
+
+    cout << " Does Working in class?   ";
+    cin >> studentInfo.clas;
+    cout << " \n\nDoes asking questions?    ";
+    cin >> studentInfo.ask;
+    cout << "\n\nGood at selflearning?    ";
+    cin >> studentInfo.self;
+    cout << "\n\nWhats the Progress at course?    ";
+    cin >> studentInfo.progress;
+
+again:
+    cout << "y to Display it?\n";
+    cout << "e to Exit Program?";
+    cin >> choice;
+
+    if (choice == finishy)
+    {
+        TeachDisplay();
+        system("cls"); //Clears screenAA
+    }
+    else if (choice == finishn)
+    {
+        cout << "Terminating....";
+        cout << "\nPress (space bar)";
+
+        system("pause");
+    }
+    else {
+        cout << "wrong choice!";
+        goto again;
+    }
+}
+
+//Teacher's Reports Display Functions
+void TeachDisplay()
+{
+    system("cls"); //Clears screenAA
+    char choice = 0, exit = 'e', back = 'b';
+    cout << " \n Student Name:" << studentInfo.fName << "Last Name:" << studentInfo.lName << "\tStudent ID:" << studentInfo.studIdNo << endl;
+    cout << "\n\n";
+    cout << "Teacher Name:" << teacherInfo.fiName << "Last Name:" << teacherInfo.laName << "\tSignature:" << teacherInfo.sign << endl;
+    cout << "\nDate:" << teacherInfo.Date << endl;
+
+    cout << " \n\nDoes Working in class |  Does asking questions |  Good at selflearning |  Whats the Progress at course? |" << endl;
+    cout << studentInfo.clas << "               |   " << studentInfo.ask << "              |  " << studentInfo.self << "     |     " << studentInfo.progress << "           |    \n ";
+redo:
+    cout << "\n\n e for Exit?:";
+    cout << "\nb for Back to Menu?";
+    cin >> choice;
+
+    if (choice == back)
+    {
+        TeaMmScreen(); // back to Menu for Admin or Teacher 
+    }
+    else if (choice == exit)
+    {
+        cout << "Terminating....";
+        cout << "\nPress (space bar)";
+
+        system("pause");
+    }
+    else {
+        cout << "Wrong letter, Please Try again";
+        goto redo;
+    }
 }
 
 //Student's Reports Function
