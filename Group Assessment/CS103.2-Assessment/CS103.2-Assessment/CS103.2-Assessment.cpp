@@ -96,8 +96,6 @@ void line()
 //Admin Info Input Function
 void admInfoInp()
 {
-    fstream myFile;
-    myFile.open("adminInfo.txt", ios::out);
 
     line(); //Line function
     cout << "\t\tSCHOOL INFORMATION SYSTEM";
@@ -130,9 +128,6 @@ void admInfoInp()
 //Student Info Input Function
 void studInfoInp()
 {
-    fstream myFile;
-    myFile.open("studentInfo.txt", ios::out);
-
     line(); //Line function
     cout << "\t\tSCHOOL INFORMATION SYSTEM";
     line(); //Line function
@@ -378,8 +373,11 @@ void StuMmScreen()
 void teaStuInf()
 {
     int choice;
+    string yesNo;
+    
     bool exitCondition = false;
 
+    back:
     system("cls"); //Clears screen
 
     line(); //Line function
@@ -389,7 +387,8 @@ void teaStuInf()
 
     cout << "1. Input Students' Information\n";
     cout << "2. Output Students' Information\n";
-    cout << "3. Exit Program\n\n";
+    cout << "3. Return to Main Menu\n";
+    cout << "4. Exit Program\n\n";
     cin >> choice;
 
     while (!exitCondition)
@@ -397,6 +396,13 @@ void teaStuInf()
         switch (choice)
         {
         case 1:
+            system("cls"); //Clears screen
+
+            line(); //Line function
+            cout << "\tSCHOOL INFORMATION SYSTEM";
+            line(); //Line function
+            cout << "\n";
+                
             cout << "Enter Student Information:\n";
 
             cout << " Enter Student ID Number: ";
@@ -412,13 +418,26 @@ void teaStuInf()
 
             cout << " Enter Program: ";
             cin >> studentInfo.progEn;
+                
+            cout << "\n\nGo back? ";
+            cin >> yesNo;
+
+            if (yesNo == "yes")
+            {
+                goto back;
+            }
+                
             break;
 
         case 2:
 
             break;
 
-        case 3:
+       case 3:
+            TeaMmScreen(); //Teacher Main Menu Screen
+            break;
+
+        case 4:
             exitCondition = true; //Exits the program
             break;
 
