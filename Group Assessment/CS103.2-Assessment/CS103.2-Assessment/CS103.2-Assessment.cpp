@@ -16,7 +16,7 @@ struct student
 struct teacher
 {
     int teaIdNo = 0; //ID Number
-    string fiName, laName, position, sign; //First name, Last name, Position
+    string fiName, laName, position, sign, Date; //First name, Last name, Position
 }teacherInfo;
 
 struct others
