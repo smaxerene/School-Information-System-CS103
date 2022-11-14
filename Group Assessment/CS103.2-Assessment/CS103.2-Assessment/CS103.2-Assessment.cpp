@@ -16,12 +16,12 @@ struct student
 struct teacher
 {
     int teaIdNo = 0; //ID Number
-    string fiName, laName, position, sign, Date; //First name, Last name, Position
+    string fiName, laName, position, sign; //First name, Last name, Position
 }teacherInfo;
 
 struct others
 {
-    string choice;
+    string choice, Date;
     double pin = 0, tries = 0;
 }otherInp;
 
@@ -41,6 +41,8 @@ void StuTeaInf();
 void TeaRep();
 void TeachDisplay();
 void StuRep();
+void TeaClasSched(); //New
+void StuClaSched(); //New
 
 //Main Function
 int main()
@@ -62,12 +64,10 @@ int main()
 
     if (choice == admin)
     {
-        system("cls"); //Clears screen
         admInfoInp();
     }
     else if (choice == stud)
     {
-        system("cls"); //Clears screen
         studInfoInp();
     }
     else if (choice == 'e')
@@ -97,6 +97,7 @@ void line()
 //Admin Info Input Function
 void admInfoInp()
 {
+    system("cls"); //Clears screen
 
     line(); //Line function
     cout << "\t\tSCHOOL INFORMATION SYSTEM";
@@ -105,18 +106,18 @@ void admInfoInp()
 
     cout << "Enter Details:\n\n";
 
-    cout << "Enter Admin ID Number: ";
+    cout << " Enter Admin ID Number: ";
     cin >> teacherInfo.teaIdNo;
 
     cout << "\n";
 
-    cout << "Enter Last Name: ";
+    cout << " Enter Last Name: ";
     cin >> teacherInfo.laName;
 
-    cout << "Enter First Name: ";
+    cout << " Enter First Name: ";
     cin >> teacherInfo.fiName;
 
-    cout << "Enter Position: ";
+    cout << " Enter Position: ";
     cin >> teacherInfo.position;
 
     passReg(); //Login Function
@@ -129,6 +130,8 @@ void admInfoInp()
 //Student Info Input Function
 void studInfoInp()
 {
+    system("cls"); //Clears screen
+
     line(); //Line function
     cout << "\t\tSCHOOL INFORMATION SYSTEM";
     line(); //Line function
@@ -136,18 +139,18 @@ void studInfoInp()
 
     cout << "Enter Details:\n\n";
 
-    cout << "Enter Student ID Number: ";
+    cout << " Enter Student ID Number: ";
     cin >> studentInfo.studIdNo;
 
     cout << "\n";
 
-    cout << "Enter Last Name: ";
+    cout << " Enter Last Name: ";
     cin >> studentInfo.lName;
 
-    cout << "Enter First Name: ";
+    cout << " Enter First Name: ";
     cin >> studentInfo.fName;
 
-    cout << "Enter Program: ";
+    cout << " Enter Program: ";
     cin >> studentInfo.progEn;
 
     passReg(); //Login Function
@@ -272,6 +275,8 @@ void TeaMmScreen()
     bool exitCondition = false;
     int menu = 0;
 
+here:
+
     system("cls");//Clears screen
 
     line(); //Line function
@@ -302,7 +307,7 @@ void TeaMmScreen()
             teaTeaInf(); //Teacher's Teacher Info Function
             break;
         case 3:
-
+            TeaClasSched(); //Teacher's Class Schedule
             break;
         case 4:
             TeaRep(); //Teacher's Reports Functions
@@ -312,6 +317,7 @@ void TeaMmScreen()
             break;
         default:
             cout << " ERROR ";
+            goto here;
         }
         cout << "\nThank you for using our application!\n\n";
         cout << "Program Ended\n";
@@ -323,6 +329,8 @@ void StuMmScreen()
 {
     bool exitCondition = false;
     int menu = 0;
+
+here:
 
     system("cls");//Clears screen
 
@@ -354,7 +362,7 @@ void StuMmScreen()
             StuTeaInf(); //Student's Teacher Info Function
             break;
         case 3:
-
+            StuClaSched(); //Student's Class Schedule
             break;
         case 4:
             StuRep(); //Student's Reports Function
@@ -364,6 +372,7 @@ void StuMmScreen()
             break;
         default:
             cout << " ERROR ";
+            goto here;
         }
         cout << "\nThank you for using our application!\n\n";
         cout << "Program Ended\n";
@@ -378,7 +387,8 @@ void teaStuInf()
     
     bool exitCondition = false;
 
-    back:
+back:
+
     system("cls"); //Clears screen
 
     line(); //Line function
@@ -403,7 +413,9 @@ void teaStuInf()
             cout << "\tSCHOOL INFORMATION SYSTEM";
             line(); //Line function
             cout << "\n";
-                
+
+        here: 
+
             cout << "Enter Student Information:\n";
 
             cout << " Enter Student ID Number: ";
@@ -427,10 +439,40 @@ void teaStuInf()
             {
                 goto back;
             }
-                
+            else
+            {
+                cout << "Add another (yes/no)? " << "\n";
+                goto here;
+            }
+
             break;
 
         case 2:
+            system("cls"); //Clears screen
+
+            line(); //Line function
+            cout << "\tSCHOOL INFORMATION SYSTEM";
+            line(); //Line function
+            cout << "\n";
+
+            cout << "Student Information:\n";
+
+            cout << " Student ID Number: " << studentInfo.studIdNo << "\n";
+
+            cout << " Enter Last Name: " << studentInfo.lName << "\n";
+
+            cout << " Enter First Name: " << studentInfo.fName << "\n";
+
+            cout << " Enter Program: " << studentInfo.progEn << "\n";
+
+
+            cout << "\n\nGo back (yes/no)? ";
+            cin >> yesNo;
+
+            if (yesNo == "yes")
+            {
+                goto back;
+            }
 
             break;
 
@@ -538,29 +580,50 @@ void TeaRep()
     cout << "\t\tSCHOOL INFORMATION SYSTEM";
     line(); //Line function
 
-    cout << " \n Student first and Last Name:"; cin >> studentInfo.fName; cout << ":"; cin >> studentInfo.lName;
-    cout << "\tStudent ID:"; cin >> studentInfo.studIdNo;
-    cout << "\n\n";
-    cout << "Teacher First and Last Name:"; cin >> teacherInfo.fiName; cout << ":"; cin >> teacherInfo.laName;
-    cout << "\tSignature:"; cin >> teacherInfo.sign;
+    cout << "Report: \n";
 
-    cout << "Date:";
-    cin >> teacherInfo.Date;
-    cout << "\n\n";
-    cout << "Review student rate rarely/constantly/excellent/ bad/ good:\n";
+    cout << "\nStudent: ";
+    cout << "\n First Name: ";
+    cin >> studentInfo.fName;
+    cout << " Last Name: ";
+    cin >> studentInfo.lName;
+    cout << " Student ID: ";
+    cin >> studentInfo.studIdNo;
 
-    cout << " Does Working in class?   ";
+    cout << "\n\n";
+    cout << "Teacher: ";
+    cout << "\n First Name: ";
+    cin >> teacherInfo.fiName;
+    cout << " Last Name: ";
+    cin >> teacherInfo.laName;
+    cout << " Admin ID Number: ";
+    cin >> teacherInfo.teaIdNo;
+    cout << " Signature: ";
+    cin >> teacherInfo.sign;
+
+    cout << "\n Date: ";
+    cin >> otherInp.Date;
+    cout << "\n\n";
+
+    cout << "Student Rating (poor/ weak/ average/ good/ excellent)";
+
+    cout << "\n Does work in class? ";
     cin >> studentInfo.clas;
-    cout << " \n\nDoes asking questions?    ";
+
+    cout << " Does ask questions? ";
     cin >> studentInfo.ask;
-    cout << "\n\nGood at selflearning?    ";
+
+    cout << " Self-learning? ";
     cin >> studentInfo.self;
-    cout << "\n\nWhats the Progress at course?    ";
+
+    cout << " Progress at course? ";
     cin >> studentInfo.progress;
 
+    cout << "\n\n";
+
 again:
-    cout << "y to Display it?\n";
-    cout << "e to Exit Program?";
+    cout << "Press y to Display Report \n";
+    cout << "Press e to Exit Program ";
     cin >> choice;
 
     if (choice == finishy)
@@ -584,18 +647,32 @@ again:
 //Teacher's Reports Display Functions
 void TeachDisplay()
 {
-    system("cls"); //Clears screenAA
-    char choice = 0, exit = 'e', back = 'b';
-    cout << " \n Student Name:" << studentInfo.fName << "Last Name:" << studentInfo.lName << "\tStudent ID:" << studentInfo.studIdNo << endl;
-    cout << "\n\n";
-    cout << "Teacher Name:" << teacherInfo.fiName << "Last Name:" << teacherInfo.laName << "\tSignature:" << teacherInfo.sign << endl;
-    cout << "\nDate:" << teacherInfo.Date << endl;
+    system("cls"); //Clears screen
 
-    cout << " \n\nDoes Working in class |  Does asking questions |  Good at selflearning |  Whats the Progress at course? |" << endl;
-    cout << studentInfo.clas << "               |   " << studentInfo.ask << "              |  " << studentInfo.self << "     |     " << studentInfo.progress << "           |    \n ";
+    char choice = 0, exit = 'e', back = 'b';
+
+    line(); //Line function
+    cout << "\t\tSCHOOL INFORMATION SYSTEM";
+    line(); //Line function
+
+    cout << "\nReport Display: \n\n";
+
+    cout << "Student: ";
+    cout << "\n Fisrt Name: " << studentInfo.fName << "\n Last Name: " << studentInfo.lName << "\n Student ID: " << studentInfo.studIdNo << endl;
+    cout << "\n\n";
+
+    cout << "Teacher: ";
+    cout << "\n First Name: " << teacherInfo.fiName << "\n Last Name: " << teacherInfo.laName << "\n Admin ID Number: " << teacherInfo.teaIdNo << "\n Signature: " << teacherInfo.sign << endl;
+
+    cout << "\nDate:" << otherInp.Date << endl;
+
+    cout << " \n\nDoes work in class? | Does ask questions? |  Self-learning?  |  Progress at course? " << endl;
+    cout << studentInfo.clas << "            |   " << studentInfo.ask << "              |  " << studentInfo.self << "     |     " << studentInfo.progress << "           |    \n ";
+
 redo:
-    cout << "\n\n e for Exit?:";
-    cout << "\nb for Back to Menu?";
+
+    cout << "\n\nPress e to Exit ";
+    cout << "\nPress b to return to Menu ";
     cin >> choice;
 
     if (choice == back)
@@ -624,4 +701,16 @@ void StuRep()
     cout << "\t\tSCHOOL INFORMATION SYSTEM";
     line(); //Line function
     cout << "\n";
+}
+
+//Teacher's CLass Schedule Function
+void TeaClasSched()
+{
+
+}
+
+//Student's CLass Schedule Function
+void StuClaSched()
+{
+
 }
