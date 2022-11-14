@@ -666,8 +666,9 @@ void TeachDisplay()
 
     cout << "\nDate:" << otherInp.Date << endl;
 
-    cout << " \n\nDoes work in class? | Does ask questions? |  Self-learning?  |  Progress at course? " << endl;
-    cout << studentInfo.clas << "            |   " << studentInfo.ask << "              |  " << studentInfo.self << "     |     " << studentInfo.progress << "           |    \n ";
+
+    cout << " \n\n| Does work in class?  | Does ask questions?  |    Self-learning?    |  Progress at course? |" << endl;
+    cout << "|" << setw(22) << studentInfo.clas << "|" << setw(22) << studentInfo.ask << "|" << setw(22) << studentInfo.self << "|" << setw(22) << studentInfo.progress << "|\n";
 
 redo:
 
