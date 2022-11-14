@@ -10,7 +10,13 @@ using namespace std;
 struct student
 {
     int studIdNo = 0; //ID Number
-    string fName, lName, progEn, sign, clas, ask, self, progress; //First name, Last name, Program Enrolled
+    string GradeA, GradeB, GradeC, GradeD;
+    string Monday = "12:30pm - 4:30pm";
+    string Tuesday = "12:30pm - 4:30pm";
+    string Wednesday = "Self Study - No Class";
+    string Thursday = "12:30pm - 4:30pm";
+    string Friday = "12:30pm - 4:30pm";
+    string fName, lName, progEn, sign, clas, ask, self, progress, semester, Date, course; //First name, Last name, Program Enrolled
 }studentInfo;
 
 struct teacher
@@ -629,7 +635,7 @@ again:
     if (choice == finishy)
     {
         TeachDisplay();
-        system("cls"); //Clears screenAA
+        system("cls"); //Clears screen
     }
     else if (choice == finishn)
     {
@@ -655,7 +661,7 @@ void TeachDisplay()
     cout << "\t\tSCHOOL INFORMATION SYSTEM";
     line(); //Line function
 
-    cout << "\nReport Display: \n\n";
+    cout << "\nTeacher's Report Display: \n\n";
 
     cout << "Student: ";
     cout << "\n Fisrt Name: " << studentInfo.fName << "\n Last Name: " << studentInfo.lName << "\n Student ID: " << studentInfo.studIdNo << endl;
@@ -678,7 +684,7 @@ redo:
 
     if (choice == back)
     {
-        TeaMmScreen(); // back to Menu for Admin or Teacher 
+        TeaMmScreen(); // Teacher's Main Menu Screen
     }
     else if (choice == exit)
     {
@@ -698,10 +704,48 @@ void StuRep()
 {
     system("cls"); //Clears screen
 
+    char choice = 0, term = 'e', back = 'b';
+
     line(); //Line function
     cout << "\t\tSCHOOL INFORMATION SYSTEM";
     line(); //Line function
     cout << "\n";
+
+    cout << "Student's Report: \n";
+    cout << "\n";
+
+    cout << "Student's Information: "
+    cout << "\n First Name:" << studentInfo.fName << "\n Last Name:" << studentInfo.lName << "\n Student ID:" << studentInfo.studIdNo << endl;
+   
+    cout << "\n\n Semester: ";
+    cin >> studentInfo.semester;
+
+    cout << "\n\n Enter Date: ";
+    cin >> studentInfo.Date;
+
+    cout << "\n\n Enter Program/ Course: ";
+    cin >> studentInfo.course;
+    cout << "\n\n\n";
+
+redo:
+
+    cout << "\n\n Press e to Exit?:";
+    cout << "\nPress b to return to Menu?";
+    cin >> choice;
+    if (choice == back)
+    {
+        StuMmScreen(); // back to Menu for Admin or Teacher 
+    }
+    else if (choice == term)
+    {
+        cout << "Terminating....";
+        exit(0);
+
+    }
+    else {
+        cout << "Wrong letter, Please Try again";
+        goto redo;
+    }
 }
 
 //Teacher's Class Schedule Function
@@ -709,10 +753,39 @@ void TeaClasSched()
 {
     system("cls"); //Clears screen
 
+    char choice = 0, term = 'e', back = 'b';
+
     line(); //Line function
     cout << "\t\tSCHOOL INFORMATION SYSTEM";
     line(); //Line function
     cout << "\n";
+
+    cout << "Admin TimeTable\n";
+    cout << "\n";
+
+    cout << "Monday" << " " << right << setw(20) << setprecision(2) << fixed << " " << "Tuesday" << right << setw(20) << setprecision(2) << fixed << " " << "Wednesday" << right << setw(20) << setprecision(2) << fixed << " " << "Thursday" << right << setw(20) << setprecision(2) << fixed << " " << "Friday" << endl;
+    cout << studentInfo.Monday << right << setw(10) << setprecision(2) << fixed << "|" << studentInfo.Tuesday << right << setw(10) << setprecision(2) << fixed << "|" << studentInfo.Wednesday << right << setw(10) << setprecision(2) << fixed << "|" << studentInfo.Thursday << right << setw(10) << setprecision(2) << fixed << "|" << studentInfo.Friday << endl;
+
+redo:
+
+    cout << "\n\n Press e to Exit ";
+    cout << "\n Press b to return to Menu ";
+    cin >> choice;
+
+    if (choice == back)
+    {
+        TeaMmScreen(); // back to Menu for Admin or Teacher 
+    }
+    else if (choice == term)
+    {
+        cout << "Terminating....";
+        exit(0);
+    }
+    else 
+    {
+        cout << "Wrong letter, Please Try again";
+        goto redo;
+    }
 }
 
 //Student's Class Schedule Function
@@ -720,8 +793,35 @@ void StuClaSched()
 {
     system("cls"); //Clears screen
 
+    char choice = 0, term = 'e', back = 'b';
+
     line(); //Line function
     cout << "\t\tSCHOOL INFORMATION SYSTEM";
     line(); //Line function
     cout << "\n";
+
+    cout << "Student TimeTable\n";
+    cout << "\n";
+
+    cout << "Monday" << " " << right << setw(20) << setprecision(2) << fixed << " " << "Tuesday" << right << setw(20) << setprecision(2) << fixed << " " << "Wednesday" << right << setw(20) << setprecision(2) << fixed << " " << "Thursday" << right << setw(20) << setprecision(2) << fixed << " " << "Friday" << endl;
+    cout << studentInfo.Monday << right << setw(27) << setprecision(2) << fixed << studentInfo.Tuesday << right << setw(32) << setprecision(2) << fixed << studentInfo.Wednesday << right << setw(24) << setprecision(2) << fixed << studentInfo.Thursday << right << setw(28) << setprecision(2) << fixed << studentInfo.Friday << endl;
+redo:
+    cout << "\n\n Press e to Exit ";
+    cout << "\n Press b to return to Menu?";
+    cin >> choice;
+
+    if (choice == back)
+    {
+        StuMmScreen(); // Student's Main Menu Function
+    }
+    else if (choice == term)
+    {
+        cout << "Terminating....";
+        exit(0);
+    }
+    else {
+        cout << "Wrong letter, Please Try again";
+        goto redo;
+    }
 }
+
