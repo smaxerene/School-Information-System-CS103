@@ -707,11 +707,21 @@ void StuRep()
 //Teacher's Class Schedule Function
 void TeaClasSched()
 {
+    system("cls"); //Clears screen
 
+    line(); //Line function
+    cout << "\t\tSCHOOL INFORMATION SYSTEM";
+    line(); //Line function
+    cout << "\n";
 }
 
 //Student's Class Schedule Function
 void StuClaSched()
 {
+    system("cls"); //Clears screen
 
+    line(); //Line function
+    cout << "\t\tSCHOOL INFORMATION SYSTEM";
+    line(); //Line function
+    cout << "\n";
 }
