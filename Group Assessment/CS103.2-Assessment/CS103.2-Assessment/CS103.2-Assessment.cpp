@@ -379,7 +379,7 @@ here:
     }
 }
 
-//Teachers's Student Info Function
+//Teacher's Student Info Function
 void teaStuInf()
 {
     int choice;
@@ -492,7 +492,7 @@ back:
     }
 }
 
-//Students' Student Info Function
+//Student's Student Info Function
 void stuStuInf()
 {
     string yesNo;
@@ -703,13 +703,13 @@ void StuRep()
     cout << "\n";
 }
 
-//Teacher's CLass Schedule Function
+//Teacher's Class Schedule Function
 void TeaClasSched()
 {
 
 }
 
-//Student's CLass Schedule Function
+//Student's Class Schedule Function
 void StuClaSched()
 {
 
