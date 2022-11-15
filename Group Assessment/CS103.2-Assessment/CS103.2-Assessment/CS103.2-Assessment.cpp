@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <iomanip>
 using namespace std;
 
 //Structures
@@ -438,7 +439,7 @@ back:
             cout << " Enter Program: ";
             cin >> studentInfo.progEn;
                 
-            cout << "\n\nGo back? ";
+            cout << "\n\nGo back (yes/ no)? ";
             cin >> yesNo;
 
             if (yesNo == "yes")
@@ -714,8 +715,8 @@ void StuRep()
     cout << "Student's Report: \n";
     cout << "\n";
 
-    cout << "Student's Information: "
-    cout << "\n First Name:" << studentInfo.fName << "\n Last Name:" << studentInfo.lName << "\n Student ID:" << studentInfo.studIdNo << endl;
+    cout << "Student's Information: ";
+    cout << "\n First Name: " << studentInfo.fName << "\n Last Name: " << studentInfo.lName << "\n Student ID: " << studentInfo.studIdNo << endl;
    
     cout << "\n\n Semester: ";
     cin >> studentInfo.semester;
@@ -774,7 +775,7 @@ redo:
 
     if (choice == back)
     {
-        TeaMmScreen(); // back to Menu for Admin or Teacher 
+        TeaMmScreen(); //Teacher's Main Menu Function
     }
     else if (choice == term)
     {
