@@ -2,9 +2,9 @@
 //
 
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <iomanip>
+#include <stdio.h>
 using namespace std;
 
 //Structures
@@ -17,13 +17,15 @@ struct student
     string Wednesday = "Self Study - No Class";
     string Thursday = "12:30pm - 4:30pm";
     string Friday = "12:30pm - 4:30pm";
-    string fName, lName, progEn, sign, clas, ask, self, progress, semester, Date, course; //First name, Last name, Program Enrolled
+    string fName, lName, progEn, sign, clas, ask, self, progress, semester, course, Date, NUmber, TeaName, email, exprnc; //First name, Last name, Program Enrolled
 }studentInfo;
 
 struct teacher
 {
     int teaIdNo = 0; //ID Number
     string fiName, laName, position, sign; //First name, Last name, Position
+    string subA, subB, subC, subD, subE, subF;
+    string lvlA, lvlB, lvlC, lvlD, lvlE, lvlF;
 }teacherInfo;
 
 struct others
@@ -48,8 +50,10 @@ void StuTeaInf();
 void TeaRep();
 void TeachDisplay();
 void StuRep();
-void TeaClasSched(); //New
-void StuClaSched(); //New
+void StudDisplay();
+void TeaClasSched(); 
+void StuClaSched(); 
+void StuTeaDsply();
 
 //Main Function
 int main()
@@ -569,11 +573,89 @@ void StuTeaInf()
 {
     system("cls"); //Clears screen
 
+    char choice = 0, term = 'e', back = 'b', Disply = 'd';
+
     line(); //Line function
     cout << "\t\tSCHOOL INFORMATION SYSTEM";
     line(); //Line function
     cout << "\n";
 
+    cout << "STUDENT REPORT\n";
+    cout << "\n";
+
+    cout << " \n Student Name:" << studentInfo.fName << " \tLast Name:" << studentInfo.lName << "\t\tStudent ID:" << studentInfo.studIdNo << endl;
+    cout << "\n Semester: ";
+    cin >> studentInfo.semester;
+    cout << "\n Date: ";
+    cin >> studentInfo.Date;
+    cout << "\n What Course: ";
+    cin >> studentInfo.course;
+    cout << "\n Tutor's Name: ";
+    cin >> studentInfo.TeaName;
+    cout << "\n Phone/  Telephone Number: ";
+    cin >> studentInfo.NUmber;
+    cout << "\n Enter Email: ";
+    cin >> studentInfo.email;
+
+    cout << "\n Describe Overall experience of 3 years during your studies in Campus: \n";
+    cin >> studentInfo.exprnc;
+
+redo:
+
+    cout << "\n\n Press d for Display all ";
+    cout << "\n Press b to return to Menu ";
+    cout << "\n Press e to Exit ";
+    cin >> choice;
+
+    if (choice == back)
+    {
+        StuMmScreen(); // back to Menu for Admin or Teacher 
+    }
+    else if (choice == term)
+    {
+        cout << "Terminating....";
+        exit(0);
+    }
+    else if (choice == Disply)
+    {
+        StudDisplay();// goes to Display All the input in student display function
+    }
+    else {
+        cout << "Wrong letter, Please Try again";
+        goto redo;
+    }
+}
+
+// Display function after inputting on StuTeaInf()
+void StuTeaDsply() 
+{
+    system("cls");//clear screen
+    char choice = 0, Dsply = 'd', term = 't', backm = 'b';
+
+    cout << "\n\n";
+    cout << "\nSubjects:             " << "Math " << " " << right << setw(10) << setprecision(2) << fixed << " English" << " " << right << setw(10) << setprecision(2) << fixed << " Science" << " " << right << setw(10) << setprecision(2) << fixed << " PED " << " " << right << setw(10) << setprecision(2) << fixed << " Chemistry " << " " << right << setw(10) << setprecision(2) << fixed << "Computer Programming " << " " << right << setw(10) << setprecision(2) << fixed << endl;
+    cout << "\nNames of the Teacher: " << teacherInfo.subA << right << setw(10) << setprecision(2) << fixed << teacherInfo.subB << right << setw(10) << setprecision(2) << fixed << teacherInfo.subC << right << setw(10) << setprecision(2) << fixed << teacherInfo.subD << right << setw(10) << setprecision(2) << fixed << teacherInfo.subE << right << setw(10) << setprecision(2) << fixed << teacherInfo.subF << endl;
+    cout << "\nLevels:               " << teacherInfo.lvlA << right << setw(10) << setprecision(2) << fixed << teacherInfo.lvlB << right << setw(10) << setprecision(2) << fixed << teacherInfo.lvlC << right << setw(10) << setprecision(2) << fixed << teacherInfo.lvlD << right << setw(10) << setprecision(2) << fixed << teacherInfo.lvlE << right << setw(10) << setprecision(2) << fixed << teacherInfo.lvlF << endl;
+    cout << "\n\n";
+
+again:
+
+    cout << "Press t to shutdown: \n";
+    cout << "Press b to go back to Menu:";
+    cin >> choice;
+
+    if (choice == term)
+    {
+        exit(0);
+    }
+    else if (choice == backm)
+    {
+        StuMmScreen();
+    }
+    else {
+        cout << "Wrong letter, Please Try Again:";
+        goto again;
+    }
 }
 
 //Teacher's Reports Functions
@@ -629,6 +711,7 @@ void TeaRep()
     cout << "\n\n";
 
 again:
+
     cout << "Press y to Display Report \n";
     cout << "Press e to Exit Program ";
     cin >> choice;
@@ -705,7 +788,7 @@ void StuRep()
 {
     system("cls"); //Clears screen
 
-    char choice = 0, term = 'e', back = 'b';
+    char choice = 0, term = 'e', back = 'b', Disply = 'd';
 
     line(); //Line function
     cout << "\t\tSCHOOL INFORMATION SYSTEM";
@@ -715,23 +798,79 @@ void StuRep()
     cout << "Student's Report: \n";
     cout << "\n";
 
-    cout << "Student's Information: ";
-    cout << "\n First Name: " << studentInfo.fName << "\n Last Name: " << studentInfo.lName << "\n Student ID: " << studentInfo.studIdNo << endl;
-   
-    cout << "\n\n Semester: ";
+    cout << " \n Student Name:" << studentInfo.fName << " \tLast Name:" << studentInfo.lName << "\t\tStudent ID:" << studentInfo.studIdNo << endl;
+    cout << "\n Semester: ";
     cin >> studentInfo.semester;
-
-    cout << "\n\n Enter Date: ";
+    cout << "\n Date: ";
     cin >> studentInfo.Date;
-
-    cout << "\n\n Enter Program/ Course: ";
+    cout << "\n What Course: ";
     cin >> studentInfo.course;
-    cout << "\n\n\n";
+    cout << "\n Tutor's Name: ";
+    cin >> studentInfo.TeaName;
+    cout << " \n Phone/ Telephone Number: ";
+    cin >> studentInfo.NUmber;
+    cout << "\n Enter Email: ";
+    cin >> studentInfo.email;
+
+    cout << "\nDescribe Overall experience of 3 years during your studies in Campus: \n";
+    cin >> studentInfo.exprnc;
 
 redo:
 
     cout << "\n\n Press e to Exit?:";
+    cout << "\n Press b to return to Menu?";
+    cout << "\n Press d to display all: ";
+    cin >> choice;
+
+    if (choice == back)
+    {
+        StuMmScreen(); // back to Menu for Admin or Teacher 
+    }
+    else if (choice == term)
+    {
+        cout << "Terminating....";
+        exit(0);
+    }
+    else if (choice == Disply)
+    {
+        StudDisplay();// goes to Display All the input in student display function
+    }
+    else
+    {
+        cout << "Wrong letter, Please Try again";
+        goto redo;
+    }
+}
+ 
+
+void StudDisplay()
+{
+    system("cls"); //Clears screen
+    char choice = 0, back = 'b', term = 'e', Login = 'L';
+
+    line(); //Line function
+    cout << "\t\tSCHOOL INFORMATION SYSTEM";
+    line(); //Line function
+    cout << "\n";
+
+    cout << "Student's Report: \n";
+    cout << "\n";
+
+    cout << " \n Student Name:" << studentInfo.fName << " \tLast Name:" << studentInfo.lName << "\t\tStudent ID:" << studentInfo.studIdNo << endl;
+    cout << "\n Semester: " << studentInfo.semester << "\tDate: " << studentInfo.Date << endl;
+    cout << "\n Course: " << studentInfo.course << "\t Tutor Name: " << studentInfo.TeaName << endl;
+    cout << " \n Phone/ Telephone Number: " << studentInfo.NUmber << endl;
+    cout << "Enter Email: " << studentInfo.email << endl;
+
+    cout << "\nDescribe Overall experience of 3 years during your studies in Campus: \n";
+    cout << studentInfo.exprnc;
+
+redo:
+
+    cout << "\n\n Press e to Exitc";
     cout << "\nPress b to return to Menu?";
+    cout << "\n Press capital ( L ) for to login as an Admin:";
+
     cin >> choice;
     if (choice == back)
     {
@@ -742,6 +881,10 @@ redo:
         cout << "Terminating....";
         exit(0);
 
+    }
+    else if (choice == Login)
+    {
+        admInfoInp();
     }
     else {
         cout << "Wrong letter, Please Try again";
