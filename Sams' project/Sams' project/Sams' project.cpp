@@ -4,6 +4,7 @@
 #include <fstream>
 #include <iomanip>
 #include <string>
+#include <stdio.h>
 using namespace std;
 //Structures
 struct student
@@ -15,7 +16,8 @@ struct student
     string Wednesday = "Self Study - No Class";
     string Thursday = "12:30pm - 4:30pm";
     string Friday = "12:30pm - 4:30pm";
-    string fName, lName, progEn, sign, clas, ask, self, progress, semester, Date, course; //First name, Last name, Program Enrolled
+    string fName, lName, progEn, sign, clas, ask, self, progress, semester, Date, course, NUmber, TeaName; //First name, Last name, Program Enrolled
+    string email, exprnc;
 
 }studentInfo;
 struct teacher
@@ -23,6 +25,8 @@ struct teacher
     int teaIdNo = 0; //ID Number
     //string fiName, laName, position, sign; //First name, Last name, Position
     string fiName, laName, position, sign, Date; //First name, Last name, Position
+    string subA, subB, subC, subD, subE, subF;
+    string lvlA, lvlB, lvlC, lvlD, lvlE, lvlF;
 }teacherInfo;
 
 struct others
@@ -48,6 +52,8 @@ void TeachDisplay();
 void StuRep();
 void TeaClasSched();
 void StuClaSched();
+void StudDisplay();
+void StuTeaDsply();
 //Main Function
 int main()
 {
@@ -100,7 +106,7 @@ void line()
 //Admin Info Input Function
 void admInfoInp()
 {
-
+    system("cls");//Clears screen
     line(); //Line function
     cout << "\t\tSCHOOL INFORMATION SYSTEM";
     line(); //Line function
@@ -275,7 +281,8 @@ void TeaMmScreen()
     cout << "2. Teacher Information\n";
     cout << "3. Class Schedule Information\n";
     cout << "4. Reports\n";
-    cout << "5. Exit Program\n\n";
+    cout << "5. Exit Program\n";
+    cout << "6. Only open after student inputted details\n\n";
     cout << "Enter menu number: ";
     cin >> menu;
     while (!exitCondition)
@@ -297,6 +304,8 @@ void TeaMmScreen()
         case 5:
             exitCondition = true; //Exits the program
             break;
+        case 6: 
+            StudDisplay();
         default:
             cout << " ERROR ";
         }
@@ -464,15 +473,7 @@ void teaTeaInf()
         teaTeaInf(); //Teacher's Teacher Info Function
     }
 }
-//Student's Teacher Info Function
-void StuTeaInf()
-{
-    system("cls"); //Clears screen
-    line(); //Line function
-    cout << "\t\tSCHOOL INFORMATION SYSTEM";
-    line(); //Line function
-    cout << "\n";
-}
+
 //Teacher's Reports Functions
 void TeaRep()
 {
@@ -561,7 +562,7 @@ redo:
 void StuRep()
 {
     system("cls"); //Clears screen
-    char choice = 0, term = 'e', back = 'b';
+    char choice = 0, term = 'e', back = 'b', Disply = 'd';
     line(); //Line function
     cout << "\t\tSTUDENT REPORT";
     line(); //Line function
@@ -573,15 +574,20 @@ void StuRep()
     cin >> studentInfo.Date;
     cout << "\nWhat Course: ";
     cin >> studentInfo.course;
-    cout << "\n\n\n";
-
-
-
-
+    cout << "\nTutor Name: ";
+    cin >> studentInfo.TeaName;
+    cout << " \n Phone /  Telephone Number: ";
+    cin >> studentInfo.NUmber;
+    cout << "Enter Email: ";
+    cin >> studentInfo.email;
+  
+    cout << "\nDescribe Overall experience of 3 years during your studies in Campus: \n";
+    cin >> studentInfo.exprnc;
 
 redo:
     cout << "\n\n e for Exit?:";
     cout << "\nb for Back to Menu?";
+    cout << "\n d for Display all: ";
     cin >> choice;
     if (choice == back)
     {
@@ -591,7 +597,10 @@ redo:
     {
         cout << "Terminating....";
         exit(0);
-
+    }
+    else if (choice == Disply)
+    {
+        StudDisplay();// goes to Display All the input in student display function
     }
     else {
         cout << "Wrong letter, Please Try again";
@@ -658,4 +667,134 @@ redo:
         goto redo;
     }
 
+}
+void StudDisplay()
+{
+    system("cls"); //Clears screen
+    char choice = 0, back = 'b', term = 'e', Login = 'L';
+
+    line(); //Line function
+    cout << "\t\tStudent Report";
+    line(); //Line function
+    cout << "\n";
+
+
+    cout << " \n Student Name:" << studentInfo.fName << " \tLast Name:" << studentInfo.lName << "\t\tStudent ID:" << studentInfo.studIdNo << endl;
+    cout << "\n Semester: " << studentInfo.semester << "\tDate: " << studentInfo.Date << endl;
+    cout << "\n Course: " << studentInfo.course << "\t Tutor Name: " << studentInfo.TeaName << endl;
+    cout << " \n Phone /  Telephone Number: " << studentInfo.NUmber << endl;
+    cout << "Enter Email: " << studentInfo.email << endl;
+
+    cout << "\nDescribe Overall experience of 3 years during your studies in Campus: \n";
+    cout << studentInfo.exprnc;
+
+redo:
+    cout << "\n\n e for Exit?:";
+    cout << "\nb for Back to Menu?";
+    cout << "\ncapital ( L ) for to login as an Admin:";
+    cin >> choice;
+    if (choice == back)
+    {
+        StuMmScreen(); // back to Menu for Admin or Teacher 
+    }
+    else if (choice == term)
+    {
+        cout << "Terminating....";
+        exit(0);
+
+    }
+    else if (choice == Login)
+    {
+        admInfoInp();
+    }
+    else {
+        cout << "Wrong letter, Please Try again";
+        goto redo;
+    }
+}
+//Student's Teacher Info Function
+void StuTeaInf()
+{
+    system("cls"); //Clears screen
+    char choice = 0, Dsply = 'd', term = 't', backm = 'b';
+    line(); //Line function
+    cout << "\t\tStudent's Teacher Information";
+    line(); //Line function
+    cout << "\n";
+    cout << "\t\tEnter only the first Name of your teacher for the subject they are teaching: ";
+    cout << "\nMath: ";
+    cin >> teacherInfo.subA;
+    cout << "\nWhat level of subject: ";
+    cin >> teacherInfo.lvlA;
+    cout << "\nEnglish: ";
+    cin >> teacherInfo.subB;
+    cout << "\nWhat level of subject: ";
+    cin >> teacherInfo.lvlB;
+    cout << "\nScience: ";
+    cin >> teacherInfo.subC;
+    cout << "\nWhat level of subject: ";
+    cin >> teacherInfo.lvlC;
+    cout << "\nPED: ";
+    cin >> teacherInfo.subD;
+    cout << "\nWhat level of subject: ";
+    cin >> teacherInfo.lvlD;
+    cout << "\nChemistry: ";
+    cin >> teacherInfo.subE;
+    cout << "\nWhat level of subject: ";
+    cin >> teacherInfo.lvlE;
+    cout << "\nComputer Programming: ";
+    cin >> teacherInfo.subF;
+    cout << "\nWhat level of subject: ";
+    cin >> teacherInfo.lvlF;
+again:
+    cout << "Press d Display: \n";
+    cout << "Press t to shutdown: \n";
+    cout << "Press b to go back to Menu:";
+    cin >> choice;
+
+    if (choice == Dsply)
+    {
+        StuTeaDsply();
+    }
+    else if (choice == term)
+    {
+        exit(0);
+    }
+    else if (choice == backm)
+    {
+        StuMmScreen();
+    }
+    else {
+        cout << "Wrong letter, Please Try Again:";
+        goto again;
+    }
+}
+void StuTeaDsply() // Display function after inputting on StuTeaInf()
+{
+    system("cls");//clear screen
+    char choice = 0, Dsply = 'd', term = 't', backm = 'b';
+
+    cout << "\n\n";
+    cout << "\nSubjects:             " << "Math " << " " << right << setw(10) << setprecision(2) << fixed << " English" << " " << right << setw(10) << setprecision(2) << fixed << " Science" << " " << right << setw(10) << setprecision(2) << fixed << " PED " << " " << right << setw(10) << setprecision(2) << fixed << " Chemistry " << " " << right << setw(10) << setprecision(2) << fixed << "Computer Programming " << " " << right << setw(10) << setprecision(2) << fixed << endl;
+    cout << "\nNames of the Teacher: " << teacherInfo.subA << right << setw(10) << setprecision(2) << fixed << teacherInfo.subB << right << setw(10) << setprecision(2) << fixed << teacherInfo.subC << right << setw(10) << setprecision(2) << fixed << teacherInfo.subD << right << setw(10) << setprecision(2) << fixed << teacherInfo.subE << right << setw(10) << setprecision(2) << fixed << teacherInfo.subF << endl;
+    cout << "\nLevels:               " << teacherInfo.lvlA << right << setw(10) << setprecision(2) << fixed << teacherInfo.lvlB << right << setw(10) << setprecision(2) << fixed << teacherInfo.lvlC << right << setw(10) << setprecision(2) << fixed << teacherInfo.lvlD << right << setw(10) << setprecision(2) << fixed << teacherInfo.lvlE << right << setw(10) << setprecision(2) << fixed << teacherInfo.lvlF << endl;
+    cout << "\n\n";
+
+again:
+    cout << "Press t to shutdown: \n";
+    cout << "Press b to go back to Menu:";
+    cin >> choice;
+
+    if (choice == term)
+    {
+        exit(0);
+    }
+    else if (choice == backm)
+    {
+        StuMmScreen();
+    }
+    else {
+        cout << "Wrong letter, Please Try Again:";
+        goto again;
+    }
 }
