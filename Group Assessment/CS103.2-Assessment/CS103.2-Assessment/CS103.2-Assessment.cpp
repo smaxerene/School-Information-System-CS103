@@ -687,14 +687,26 @@ void TeaRep()
     cout << "\n Does work in class? ";
     cin >> studentInfo.clas;
 
-    cout << " Does ask questions? ";
+    cout << " Assign a grade for it A/B/C/D: ";
+    cin >> studentInfo.GradeA;
+
+    cout << "\n Does ask questions? ";
     cin >> studentInfo.ask;
 
-    cout << " Self-learning? ";
+    cout << " Assign a grade for it A/B/C/D: ";
+    cin >> studentInfo.GradeB;
+
+    cout << "\n Self-learning? ";
     cin >> studentInfo.self;
 
-    cout << " Progress at course? ";
+    cout << " Assign a grade for it A/B/C/D: ";
+    cin >> studentInfo.GradeC;
+
+    cout << "\n Progress at course? ";
     cin >> studentInfo.progress;
+
+    cout << " Assign a grade for it A/B/C/D: ";
+    cin >> studentInfo.GradeD;
 
     cout << "\n\n";
 
