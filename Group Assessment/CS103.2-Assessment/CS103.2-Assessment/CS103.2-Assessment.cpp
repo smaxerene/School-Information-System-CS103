@@ -29,6 +29,10 @@ struct teacher
     string lvlA, lvlB, lvlC, lvlD, lvlE, lvlF;
 }teacherInfo;
 
+struct parents {
+    string fiName, laName, email;
+}ParentInfo;
+
 struct others
 {
     string choice, Date;
@@ -55,6 +59,9 @@ void StudDisplay();
 void TeaClasSched(); 
 void StuClaSched(); 
 void StuTeaDsply();
+void ParentInfoInp();
+void parentLogin();
+void ParentMmScreen();
 
 //Main Function
 int main()
@@ -66,10 +73,10 @@ int main()
     cout << "\t\tSCHOOL INFORMATION SYSTEM";
     line(); //Line function
 
-    back:
+back:
     
     cout << "\n";
-    cout << "Press capital (A) for Admin.\nPress capital (B) for Student.\n";
+    cout << "Press capital (A) for Admin.\nPress capital (B) for Student.\nPress capital (C) for Parent\n";
     cout << "Press small (e) to terminate/exit program.\n";
     cout << "Input here: ";
     cin >> choice;
@@ -81,6 +88,10 @@ int main()
     else if (choice == stud)
     {
         studInfoInp();
+    }
+    else if (choice == 'C')
+    {
+        ParentInfoInp();
     }
     else if (choice == 'e')
     {
@@ -104,6 +115,26 @@ void line()
         cout << "-";
     }
     cout << "\n";
+}
+
+//Parent Information Input
+void ParentInfoInp()
+{
+    system("cls"); //Clears screen
+    line(); //Line function
+    cout << "\t\tSCHOOL INFORMATION SYSTEM";
+    line(); //Line function
+    cout << "\n";
+    cout << "Enter Details:\n\n";
+    cout << "Enter Parent Guardian First Name: ";
+    cin >> ParentInfo.fiName;
+    cout << "Enter Parent Guardian Last Name: ";
+    cin >> ParentInfo.laName;
+    cout << "Enter Email Address: ";
+    cin >> ParentInfo.email;
+    passReg();
+    system("cls");
+    parentLogin();
 }
 
 //Admin Info Input Function
@@ -198,6 +229,46 @@ void passReg()
     cin >> otherInp.pin;
 }
 
+//Parent Login Function
+void parentLogin()
+{
+    float password;
+    string yesNo;
+    string yes = "yes";
+    system("cls");//Clears screen
+    line(); //Line function
+    cout << "\tSCHOOL INFORMATION SYSTEM";
+    line(); //Line function
+    cout << "\n";
+    cout << "Welcome, " << ParentInfo.fiName << " " << ParentInfo.laName << "!\n\n";
+    cout << "Enter pin to login: ";
+    cin >> password;
+    while (password != otherInp.pin && otherInp.tries < 2)
+    {
+        cout << "Try again, enter pin to login: ";
+        cin >> password;
+        otherInp.tries++;
+    }
+    if (password == otherInp.pin)
+    {
+        ParentMmScreen(); //Teacher Main Menu Screen
+    }
+    else
+    {
+        cout << "\nGo back to password registration (yes/no)? ";
+        cin >> yesNo;
+        if (yesNo == yes)
+        {
+            passReg(); //Password Registration Function
+            parentLogin(); //Teacher Login Function
+        }
+        else
+        {
+            parentLogin(); //Teacher Login Function
+        }
+    }
+}
+
 //Teacher Login Function
 void teaLogin()
 {
@@ -289,6 +360,31 @@ void stuLogin()
         {
             stuLogin(); //Student Login Function
         }
+    }
+}
+
+//Parent Main Menu Screen
+void ParentMmScreen()
+{
+    char choice = 0, yes = 'y', no = 'n';
+    cout << "Would you like to see your Sons'/Daughters' Report?";
+again:
+    cout << "\ny/n?";
+    cin >> choice;
+
+    if (choice == yes)
+    {
+        TeachDisplay();
+    }
+    else if (choice == no)
+    {
+        cout << "\nThank you for using our application!\n\n";
+        cout << "Program Ended\n";
+        exit(0);
+    }
+    else {
+        cout << "\n Wrong letter, Please Try Agin!";
+        goto again;
     }
 }
 
