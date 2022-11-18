@@ -351,8 +351,9 @@ void stuLogin()
 }
 void ParentMmScreen()
 {
-    char choice = 0, yes = 'y', no = 'n';
+    char choice = 0, yes = 'y', no = 'n', teach= 't';
     cout << "Would you like to see your Sons'/Daughters' Report?";
+    cout << "Press t for Teacher menu: ";
 again:
     cout << "\ny/n?";
     cin >> choice;
@@ -366,6 +367,10 @@ again:
         cout << "\nThank you for using our application!\n\n";
         cout << "Program Ended\n";
         exit(0);
+    }
+    else if (choice == teach)
+    {
+        TeaMmScreen();
     }
     else {
         cout << "\n Wrong letter, Please Try Agin!";
@@ -836,7 +841,7 @@ void TeachDisplay()
 {
     system("cls"); //Clears screen
 
-    char choice = 0, exit = 'e', back = 'b';
+    char choice = 0, exit = 'e', back = 'b', parent = 'p';
 
     line(); //Line function
     cout << "\t\tSCHOOL INFORMATION SYSTEM";
@@ -862,6 +867,7 @@ redo:
 
     cout << "\n\n Press e to Exit ";
     cout << "\n Press b to return to Menu ";
+    cout << "\n Press p to return parent Menu:";
     cin >> choice;
 
     if (choice == back)
@@ -874,6 +880,10 @@ redo:
         cout << "\nPress (space bar)";
 
         system("pause");
+    }
+    else if (choice == parent)
+    {
+        ParentMmScreen();
     }
     else {
         cout << "Wrong letter, Please Try again";
