@@ -76,7 +76,7 @@ int main()
 back:
     
     cout << "\n";
-    cout << "Press capital (A) for Admin.\nPress capital (B) for Student.\nPress capital (C) for Parent\n";
+    cout << "Press capital (A) for Admin.\nPress capital (B) for Student.\n";
     cout << "Press small (e) to terminate/exit program.\n";
     cout << "Input here: ";
     cin >> choice;
@@ -88,10 +88,6 @@ back:
     else if (choice == stud)
     {
         studInfoInp();
-    }
-    else if (choice == 'C')
-    {
-        ParentInfoInp();
     }
     else if (choice == 'e')
     {
@@ -367,9 +363,10 @@ void stuLogin()
 void ParentMmScreen()
 {
     char choice = 0, yes = 'y', no = 'n';
-    cout << "Would you like to see your Sons'/Daughters' Report?";
+    cout << "Would you like to see your child's Report?";
+    cout << "Press t for Teacher's Menu ";
 again:
-    cout << "\ny/n?";
+    cout << "\ny/n? ";
     cin >> choice;
 
     if (choice == yes)
@@ -381,6 +378,10 @@ again:
         cout << "\nThank you for using our application!\n\n";
         cout << "Program Ended\n";
         exit(0);
+    }
+    else if (choice == 't')
+    {
+        TeaMmScreen();
     }
     else {
         cout << "\n Wrong letter, Please Try Agin!";
@@ -878,6 +879,7 @@ redo:
 
     cout << "\n\n Press e to Exit ";
     cout << "\n Press b to return to Menu ";
+    cout << "\n Press p to return to Parent Menu ";
     cin >> choice;
 
     if (choice == back)
@@ -890,6 +892,10 @@ redo:
         cout << "\nPress (space bar)";
 
         system("pause");
+    }
+    else if
+    {
+        ParentMmScreen();
     }
     else 
     {
