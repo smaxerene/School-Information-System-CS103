@@ -17,7 +17,8 @@ struct student
     string Wednesday = "Self Study - No Class";
     string Thursday = "12:30pm - 4:30pm";
     string Friday = "12:30pm - 4:30pm";
-    string fName, lName, progEn, sign, clas, ask, self, progress, semester, course, Date, NUmber, TeaName, email, exprnc; //First name, Last name, Program Enrolled
+    string fName, lName, progEn, sign, clas, ask, self, progress, semester, course, Date, TeaName, email, NUmber; //First name, Last name, Program Enrolled
+    char exprnc[1000];
 }studentInfo;
 
 struct teacher
@@ -54,6 +55,7 @@ void StudDisplay();
 void TeaClasSched(); 
 void StuClaSched(); 
 void StuTeaDsply();
+
 
 //Main Function
 int main()
@@ -283,7 +285,7 @@ void stuLogin()
 //Teacher Main Menu Screen
 void TeaMmScreen()
 {
-    bool exitCondition = false;
+
     int menu = 0;
 
 here:
@@ -307,8 +309,6 @@ here:
     cout << "Enter menu number: ";
     cin >> menu;
 
-    while (!exitCondition)
-    {
         switch (menu)
         {
         case 1:
@@ -324,15 +324,17 @@ here:
             TeaRep(); //Teacher's Reports Functions
             break;
         case 5:
-            exitCondition = true; //Exits the program
+            cout << "\nThank you for using our application!\n\n";
+            cout << "Program Ended\n";
+
+            exit(0);
             break;
         default:
             cout << " ERROR ";
             goto here;
         }
-        cout << "\nThank you for using our application!\n\n";
-        cout << "Program Ended\n";
-    }
+       
+    
 }
 
 //Student Main Menu Screen
@@ -395,7 +397,7 @@ void teaStuInf()
 {
     int choice;
     string yesNo;
-    
+
     bool exitCondition = false;
 
 back:
@@ -425,11 +427,11 @@ back:
             line(); //Line function
             cout << "\n";
 
-        here: 
+        here:
 
             cout << "Enter Student Information:\n";
 
-            cout << " Enter Student ID Number: ";
+            cout << "\n Enter Student ID Number: ";
             cin >> studentInfo.studIdNo;
 
             cout << "\n";
@@ -442,7 +444,7 @@ back:
 
             cout << " Enter Program: ";
             cin >> studentInfo.progEn;
-                
+
             cout << "\n\nGo back (yes/ no)? ";
             cin >> yesNo;
 
@@ -487,7 +489,7 @@ back:
 
             break;
 
-       case 3:
+        case 3:
             TeaMmScreen(); //Teacher Main Menu Screen
             break;
 
@@ -812,8 +814,8 @@ void StuRep()
     cout << "\n Enter Email: ";
     cin >> studentInfo.email;
 
-    cout << "\nDescribe Overall experience of 3 years during your studies in Campus: \n";
-    cin >> studentInfo.exprnc;
+    cout << "\nDescribe Overall experience of 3 years during your studies in Campus (Press zero (0) and enter if done): \n";
+    cin.getline(studentInfo.exprnc, 1000, '0');
 
 redo:
 
@@ -844,7 +846,7 @@ redo:
  
 
 void StudDisplay()
-{
+{ 
     system("cls"); //Clears screen
     char choice = 0, back = 'b', term = 'e', Login = 'L';
 
@@ -856,20 +858,20 @@ void StudDisplay()
     cout << "Student's Report: \n";
     cout << "\n";
 
-    cout << " \n Student Name:" << studentInfo.fName << " \tLast Name:" << studentInfo.lName << "\t\tStudent ID:" << studentInfo.studIdNo << endl;
-    cout << "\n Semester: " << studentInfo.semester << "\tDate: " << studentInfo.Date << endl;
+    cout << " \n Student Name: " << studentInfo.fName << " \t Last Name: " << studentInfo.lName << "\t\tStudent ID: " << studentInfo.studIdNo << endl;
+    cout << "\n Semester: " << studentInfo.semester << "\t Date: " << studentInfo.Date << endl;
     cout << "\n Course: " << studentInfo.course << "\t Tutor Name: " << studentInfo.TeaName << endl;
     cout << " \n Phone/ Telephone Number: " << studentInfo.NUmber << endl;
-    cout << "Enter Email: " << studentInfo.email << endl;
+    cout << "\n Email: " << studentInfo.email << endl;
 
-    cout << "\nDescribe Overall experience of 3 years during your studies in Campus: \n";
-    cout << studentInfo.exprnc;
+    cout << "\n Describe Overall experience of 3 years during your studies in Campus: \n";
+    cout << " " << studentInfo.exprnc;
 
 redo:
 
-    cout << "\n\n Press e to Exitc";
-    cout << "\nPress b to return to Menu?";
-    cout << "\n Press capital ( L ) for to login as an Admin:";
+    cout << "\n\n Press e to Exit ";
+    cout << "\n Press b to return to Menu ";
+    cout << "\n Press capital ( L ) for to login as an Admin ";
 
     cin >> choice;
     if (choice == back)
