@@ -132,11 +132,17 @@ void admInfoInp()
     cout << " Enter Position: ";
     cin >> teacherInfo.position;
 
-    passReg(); //Login Function
-
-    system("cls");//Clears screen
-
-    teaLogin(); //Teacher Login Function
+    if (teacherInfo.position == "Admin")
+    {
+        passReg(); //Login Function
+        system("cls");//Clears screen
+        teaLogin(); //Teacher Login Function
+    }
+    else
+    {
+        cout << "Not Admin... Terminated the program. ";
+        cout << "\n\n";
+    }
 }
 
 //Student Info Input Function
@@ -165,11 +171,17 @@ void studInfoInp()
     cout << " Enter Program: ";
     cin >> studentInfo.progEn;
 
-    passReg(); //Login Function
-
-    system("cls");//Clears screen
-
-    stuLogin(); //Student Login Function
+    if (studentInfo.progEn == "student")
+    {
+        passReg(); //Login Function
+        system("cls");//Clears screen
+        stuLogin(); //Student Login Function
+    }
+    else
+    {
+        cout << "Not a student, Terminated the Program... ";
+        cout << "\n\n";
+    }
 }
 
 //Password Registration Function
@@ -189,11 +201,11 @@ void passReg()
 //Teacher Login Function
 void teaLogin()
 {
+    system("cls");//Clears screen
+
     float password;
     string yesNo;
     string yes = "yes";
-
-    system("cls");//Clears screen
 
     line(); //Line function
     cout << "\tSCHOOL INFORMATION SYSTEM";
@@ -384,12 +396,12 @@ here:
 //Teacher's Student Info Function
 void teaStuInf()
 {
-    int choice;
-    string yesNo;
-
 back:
 
     system("cls"); //Clears screen
+
+    int choice;
+    string yesNo;
 
     line(); //Line function
     cout << "\t\tSCHOOL INFORMATION SYSTEM";
@@ -442,9 +454,10 @@ back:
             cout << "Add another (yes/no)? " << "\n";
             goto here;
         }
-
         break;
     case 2:
+    case2:
+
         system("cls"); //Clears screen
 
         line(); //Line function
@@ -470,7 +483,10 @@ back:
         {
             goto back;
         }
-
+        else
+        {
+            goto case2;
+        }
         break;
     case 3:
         TeaMmScreen(); //Teacher Main Menu Screen
@@ -519,10 +535,10 @@ void stuStuInf()
 //Teacher's Teacher Info Function
 void teaTeaInf()
 {
+    system("cls");//Clears screen
+
     string yesNo;
     string yes = "yes";
-
-    system("cls");//Clears screen
 
     line(); //Line function
     cout << "\t\tSCHOOL INFORMATION SYSTEM";
@@ -618,6 +634,7 @@ again:
 void StuTeaDsply() 
 {
     system("cls");//clear screen
+
     char choice = 0, Dsply = 'd', term = 't', backm = 'b';
 
     cout << "\n\n";
@@ -778,7 +795,8 @@ redo:
 
         system("pause");
     }
-    else {
+    else 
+    {
         cout << "Wrong letter, Please Try again";
         goto redo;
     }
