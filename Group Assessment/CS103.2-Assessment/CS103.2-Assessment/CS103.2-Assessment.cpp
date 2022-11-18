@@ -682,7 +682,7 @@ void TeaRep()
     cin >> otherInp.Date;
     cout << "\n\n";
 
-    cout << "Student Rating (poor/ weak/ average/ good/ excellent)";
+    cout << "Student Rating (poor/ weak/ average/ good/ excellent)\n";
 
     cout << "\n Does work in class? ";
     cin >> studentInfo.clas;
@@ -754,16 +754,17 @@ void TeachDisplay()
     cout << "Teacher: ";
     cout << "\n First Name: " << teacherInfo.fiName << "\n Last Name: " << teacherInfo.laName << "\n Admin ID Number: " << teacherInfo.teaIdNo << "\n Signature: " << teacherInfo.sign << endl;
 
-    cout << "\nDate:" << otherInp.Date << endl;
+    cout << "\nDate: " << otherInp.Date << "\n\n";
 
 
-    cout << " \n\n| Does work in class?  | Does ask questions?  |    Self-learning?    |  Progress at course? |" << endl;
-    cout << "|" << setw(22) << studentInfo.clas << "|" << setw(22) << studentInfo.ask << "|" << setw(22) << studentInfo.self << "|" << setw(22) << studentInfo.progress << "|\n";
+    cout << " Questions: " << right << setw(10) << setprecision(2) << fixed << " " << "Does Working in class" << right << setw(10) << setprecision(2) << fixed << " " << " Does asking questions" << right << setw(10) << setprecision(2) << fixed << " " << "Good at selflearning " << right << setw(10) << setprecision(2) << fixed << " " << " Whats the Progress at course? " << endl;
+    cout << " Overview: " << right << setw(30) << setprecision(2) << fixed << studentInfo.clas << right << setw(30) << setprecision(2) << fixed << studentInfo.ask << right << setw(30) << setprecision(2) << fixed << studentInfo.self << right << setw(30) << setprecision(2) << fixed << studentInfo.progress << "   \n ";
+    cout << " Grade: " << right << setw(30) << setprecision(2) << fixed << " " << studentInfo.GradeA << right << setw(30) << setprecision(2) << fixed << " " << studentInfo.GradeB << right << setw(30) << setprecision(2) << fixed << " " << studentInfo.GradeC << right << setw(30) << setprecision(2) << fixed << " " << studentInfo.GradeD << "   \n ";
 
 redo:
 
-    cout << "\n\nPress e to Exit ";
-    cout << "\nPress b to return to Menu ";
+    cout << "\n\n Press e to Exit ";
+    cout << "\n Press b to return to Menu ";
     cin >> choice;
 
     if (choice == back)
