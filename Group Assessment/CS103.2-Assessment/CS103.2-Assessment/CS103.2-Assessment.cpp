@@ -56,7 +56,6 @@ void TeaClasSched();
 void StuClaSched(); 
 void StuTeaDsply();
 
-
 //Main Function
 int main()
 {
@@ -279,7 +278,6 @@ void stuLogin()
             stuLogin(); //Student Login Function
         }
     }
-
 }
 
 //Teacher Main Menu Screen
@@ -516,7 +514,6 @@ void stuStuInf()
     {
         stuStuInf(); //Students' Student Info Function
     }
-
 }
 
 //Teacher's Teacher Info Function
