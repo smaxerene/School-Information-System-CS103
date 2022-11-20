@@ -113,7 +113,7 @@ void line()
     cout << "\n";
 }
 
-//Parent Information Input
+//Parent Information Input Function
 void ParentInfoInp()
 {
     system("cls"); //Clears screen
@@ -225,7 +225,7 @@ void passReg()
     cin >> otherInp.pin;
 }
 
-//Parent Login Function
+//Parents' Login Function
 void parentLogin()
 {
     float password;
@@ -359,7 +359,7 @@ void stuLogin()
     }
 }
 
-//Parent Main Menu Screen
+//Parents' Main Menu Screen
 void ParentMmScreen()
 {
     char choice = 0, yes = 'y', no = 'n';
@@ -893,7 +893,7 @@ redo:
 
         system("pause");
     }
-    else if
+    else if (choice == 'b')
     {
         ParentMmScreen();
     }
