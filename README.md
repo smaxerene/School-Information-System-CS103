@@ -11,5 +11,3 @@ Application includes:
 - Appropriate messages
 - Admin accounts
 - Classes, teachers, parents, & reports
-
-Final Project File: Final Code
