@@ -12,4 +12,4 @@ Application includes:
 - Admin accounts
 - Classes, teachers, parents, & reports
 
-Final Project File: Group Assessment / CS103.2-Assessment
+Final Project File: Final Code
