@@ -426,7 +426,7 @@ here:
     cout << "3. Class Schedule Information\n";
     cout << "4. Reports\n";
     cout << "5. Exit Program\n\n";
-    cout << "6. Only open after student inputted details\n"
+    cout << "6. Only open after student inputted details\n";
     cout << "Enter menu number: ";
     cin >> menu;
 
@@ -515,7 +515,7 @@ back:
     system("cls"); //Clears screen
 
     int choice;
-    string yesNo;
+    string yesNo, yes;
 
     line(); //Line function
     cout << "\t\tSCHOOL INFORMATION SYSTEM";
@@ -566,9 +566,9 @@ back:
         else
         {
             cout << "Add another (yes/no)? " << "\n";
-            cin >> yesNo;
+            cin >> yes;
 
-            if (yesNo == 'yes')
+            if (yes == "yes")
             {
                 goto here;
             }
