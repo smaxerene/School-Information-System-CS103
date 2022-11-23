@@ -228,17 +228,21 @@ void passReg()
 //Parents' Login Function
 void parentLogin()
 {
+    system("cls");//Clears screen
+
     float password;
     string yesNo;
     string yes = "yes";
-    system("cls");//Clears screen
+
     line(); //Line function
     cout << "\tSCHOOL INFORMATION SYSTEM";
     line(); //Line function
     cout << "\n";
+
     cout << "Welcome, " << ParentInfo.fiName << " " << ParentInfo.laName << "!\n\n";
     cout << "Enter pin to login: ";
     cin >> password;
+
     while (password != otherInp.pin && otherInp.tries < 2)
     {
         cout << "Try again, enter pin to login: ";
@@ -362,10 +366,20 @@ void stuLogin()
 //Parents' Main Menu Screen
 void ParentMmScreen()
 {
+    system("cls");//Clears screen
+
     char choice = 0, yes = 'y', no = 'n';
+
+    line(); //Line function
+    cout << "\tSCHOOL INFORMATION SYSTEM";
+    line(); //Line function
+    cout << "\n";
+
     cout << "Would you like to see your child's Report?";
     cout << "Press t for Teacher's Menu ";
+
 again:
+
     cout << "\ny/n? ";
     cin >> choice;
 
@@ -392,12 +406,11 @@ again:
 //Teacher Main Menu Screen
 void TeaMmScreen()
 {
-
-    int menu = 0;
-
 here:
 
     system("cls");//Clears screen
+
+    int menu = 0;
 
     line(); //Line function
     cout << "\t\tSCHOOL INFORMATION SYSTEM";
@@ -413,6 +426,7 @@ here:
     cout << "3. Class Schedule Information\n";
     cout << "4. Reports\n";
     cout << "5. Exit Program\n\n";
+    cout << "6. Only open after student inputted details\n"
     cout << "Enter menu number: ";
     cin >> menu;
 
@@ -434,6 +448,9 @@ here:
         cout << "\nThank you for using our application!\n\n";
         cout << "Program Ended\n";
         exit(0);
+    case 6:
+        StudDisplay();
+        break;
     default:
         cout << " ERROR ";
         goto here;
@@ -549,7 +566,16 @@ back:
         else
         {
             cout << "Add another (yes/no)? " << "\n";
-            goto here;
+            cin >> yesNo;
+
+            if (yesNo == 'yes')
+            {
+                goto here;
+            }
+            else
+            {
+                goto back;
+            }
         }
         break;
     case 2:
