@@ -1,13 +1,9 @@
-# CS103 Integrated Studio I - Group Assessment
+# Console Application: School Information System using C++
 
-## Console Application: School Information System using C++
+Overview:
+
+A C++ console application for a school information system that includes student reports, class schedules, lecturer timetables, admin accounts, important messages, three login tries, and parent accounts.
 
 Members:
 - Dave Howard Ramos
 - Samantha Maxerene Quilat
-
-Application includes:
-- 3 attempts to logins
-- Appropriate messages
-- Admin accounts
-- Classes, teachers, parents, & reports
