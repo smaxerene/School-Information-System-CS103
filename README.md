@@ -1,4 +1,4 @@
-# Console Application: School Information System using C++
+# Console Application: School Information System using C++ - CS103
 
 Overview:
 
